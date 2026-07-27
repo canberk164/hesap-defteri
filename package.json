@@ -1,1 +1,20 @@
-
+{
+  "name": "hesap-defteri",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build",
+    "start": "node dist/server.cjs"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.38.0",
+    "@vercel/kv": "^3.0.0",
+    "express": "^4.21.2",
+    "redis": "^6.1.0"
+  },
+  "devDependencies": {
+    "vite": "^6.2.3"
+  }
+}
