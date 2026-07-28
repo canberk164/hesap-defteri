@@ -1504,6 +1504,169 @@ td.num.expense { color: var(--expense-red); }
   .brand-title { font-size: 19px; }
   .settings-modal-card { width: 100%; max-height: 100vh; height: 100vh; border-radius: 0; }
 }
+
+/* Login Overlay Styling */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeInOverlay 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fadeInOverlay {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+.login-card {
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 32px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.login-icon {
+  width: 58px;
+  height: 58px;
+  background: #ECFDF5;
+  color: #059669;
+  font-size: 28px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.25);
+}
+.login-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+.login-subtitle {
+  font-size: 13.5px;
+  color: #64748B;
+  margin: 0;
+  line-height: 1.5;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.login-field label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.login-field input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #0F172A;
+  transition: all 0.2s ease;
+  outline: none;
+  background: #F8FAFC;
+}
+.login-field input:focus {
+  border-color: #059669;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+.login-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: #059669;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  margin-top: 6px;
+}
+.login-submit-btn:hover {
+  background: #047857;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+}
+.login-error-alert {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: #991B1B;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+.login-footer-hint {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 12px;
+  color: #94A3B8;
+  text-align: center;
+}
+
+/* User Profile Badge in Header */
+.user-profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.user-name-tag {
+  color: #0F172A;
+  font-weight: 700;
+}
+.logout-btn {
+  background: #EF4444;
+  color: #FFFFFF;
+  border: none;
+  padding: 5px 11px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.logout-btn:hover {
+  background: #DC2626;
+  transform: translateY(-1px);
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px white, inset 0 0 0 1.5px rgba(128,128,128,0.6) !important; }.aistudio-active-highlight { outline: 2px solid #87a9ff !important; outline-offset: -2px !important; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3), inset 0 0 0 0.5px rgba(0,0,0,0.3) !important; }.aistudio-generating-blur { filter: blur(5px) grayscale(100%) brightness(28%) !important; transition: filter 0.3s ease; }#aistudio-focus-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: #87a9ff; border-radius: 12px; z-index: 10000; padding: 8px; color: #32302c; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }#aistudio-hover-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: rgba(128,128,128,0.6); border-radius: 12px; z-index: 10000; padding: 8px; color: white; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }.aistudio-img-icon { display: none; vertical-align: middle; pointer-events: auto; cursor: pointer; }.aistudio-img-icon.visible { display: inline-flex; }#aistudio-focus-mode-tag .aistudio-img-icon { position: relative; width: 26px; height: 26px; background: #32302c; border-radius: 6px; margin: -4px -4px -4px 0; }#aistudio-focus-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 4px; left: 4px; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-hover-mode-tag .aistudio-img-icon { position: relative; width: 18px; height: 18px; margin-left: 4px; }#aistudio-hover-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-focus-mode-tag .aistudio-img-icon:hover, #aistudio-hover-mode-tag .aistudio-img-icon:hover { background: #424242 !important; }#aistudio-focus-mode-tag .aistudio-img-icon:active, #aistudio-hover-mode-tag .aistudio-img-icon:active { background: #393f51 !important; }</style></head>
 <body>
@@ -1519,6 +1682,10 @@ td.num.expense { color: var(--expense-red); }
     </div>
   </div>
   <div class="header-right">
+    <div id="userProfileBadge" class="user-profile-badge" style="display: inline-flex;">
+      <span class="user-name-tag">👤 <strong id="loggedInUserName">Canberk</strong></span>
+      <button type="button" id="logoutBtn" class="logout-btn" title="Güvenli Çıkış">🚪 Çıkış</button>
+    </div>
     <button type="button" class="settings-nav-btn" id="openSettingsBtn">
       ⚙️ Ayarlar
     </button>
@@ -1537,7 +1704,7 @@ td.num.expense { color: var(--expense-red); }
 </header>
 
 <!-- Main Settings Modal (Ayarlar: Vercel KV Veri Deposu & Kategori Kuralları) -->
-<div id="settingsModal" class="modal-overlay" style="display: none;">
+<div id="settingsModal" class="modal-overlay" style="display:none;">
   <div class="modal-card settings-modal-card">
     <div class="modal-header">
       <h3>⚙️ Uygulama Ayarları &amp; Veri Deposu</h3>
@@ -1936,6 +2103,41 @@ td.num.expense { color: var(--expense-red); }
 </section>
 
 <p class="foot-note" id="footNote">Veriler bu tarayıcıda saklanıyor. Kalıcı kayıt için yukarıdan dosya oluşturabilirsiniz.</p>
+</div>
+
+<!-- Full-Screen Login / Authentication Overlay -->
+<div id="loginOverlay" class="login-overlay" style="display: none;">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-icon">🔐</div>
+      <h2 class="login-title">Hesap Defteri Girişi</h2>
+      <p class="subtitle login-subtitle">Uygulamaya erişmek için yetkili kullanıcı girişi yapın.</p>
+    </div>
+
+    <form id="loginForm" class="login-form" onsubmit="return false;">
+      <div id="loginErrorAlert" class="login-error-alert" style="display: none;">
+        Kullanıcı adı veya şifre hatalı!
+      </div>
+
+      <div class="login-field">
+        <label for="loginUsername">Kullanıcı Adı</label>
+        <input type="text" id="loginUsername" placeholder="Kullanıcı adı" autocomplete="username" required="">
+      </div>
+
+      <div class="login-field">
+        <label for="loginPassword">Şifre</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required="">
+      </div>
+
+      <button type="submit" id="loginSubmitBtn" class="login-submit-btn">
+        🚀 Giriş Yap
+      </button>
+    </form>
+
+    <div class="login-footer-hint">
+      🔒 Yetkili Kullanıcılar
+    </div>
+  </div>
 </div>
 
 <script>
@@ -3434,8 +3636,96 @@ if (el('togglePdfBtn')) {
   });
 }
 
-/* ===================== INIT ===================== */
-async function init(){
+/* ===================== AUTHENTICATION ===================== */
+const VALID_USERS = [
+  { username: 'meltem', password: 'canberk', displayName: 'Meltem' },
+  { username: 'canberk', password: 'meltem', displayName: 'Canberk' }
+];
+
+function getLoggedInUser() {
+  try {
+    const raw = localStorage.getItem('hesap_defteri_auth_user');
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.username) {
+      const matched = VALID_USERS.find(u => u.username === parsed.username.toLowerCase());
+      if (matched) return matched;
+    }
+  } catch (e) {
+    console.error('Auth read error:', e);
+  }
+  return null;
+}
+
+function updateAuthUI() {
+  const user = getLoggedInUser();
+  const overlay = el('loginOverlay');
+  const badge = el('userProfileBadge');
+  const nameEl = el('loggedInUserName');
+
+  if (user) {
+    if (overlay) overlay.style.display = 'none';
+    if (badge) badge.style.display = 'inline-flex';
+    if (nameEl) nameEl.textContent = user.displayName;
+  } else {
+    if (overlay) overlay.style.display = 'flex';
+    if (badge) badge.style.display = 'none';
+    const uInput = el('loginUsername');
+    if (uInput) setTimeout(() => uInput.focus(), 100);
+  }
+}
+
+function handleLoginSubmit(e) {
+  if (e) e.preventDefault();
+  const uInput = el('loginUsername');
+  const pInput = el('loginPassword');
+  const errBox = el('loginErrorAlert');
+
+  const u = (uInput ? uInput.value : '').trim().toLowerCase();
+  const p = (pInput ? pInput.value : '').trim();
+
+  const matchedUser = VALID_USERS.find(user => user.username === u && user.password === p);
+
+  if (matchedUser) {
+    if (errBox) errBox.style.display = 'none';
+    localStorage.setItem('hesap_defteri_auth_user', JSON.stringify({
+      username: matchedUser.username,
+      displayName: matchedUser.displayName,
+      loginTime: new Date().toISOString()
+    }));
+    if (pInput) pInput.value = '';
+    updateAuthUI();
+    initAppAfterAuth();
+  } else {
+    if (errBox) {
+      errBox.textContent = 'Hatalı kullanıcı adı veya şifre!';
+      errBox.style.display = 'block';
+    }
+  }
+}
+
+function handleLogout() {
+  if (confirm('Oturum kapatılsın mı?')) {
+    localStorage.removeItem('hesap_defteri_auth_user');
+    updateAuthUI();
+  }
+}
+
+function setupAuthHandlers() {
+  const loginForm = el('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', handleLoginSubmit);
+  }
+  const logoutBtn = el('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', handleLogout);
+  }
+}
+
+let appInitialized = false;
+async function initAppAfterAuth() {
+  if (appInitialized) return;
+  appInitialized = true;
   updateProviderUI();
   populateCategorySelect();
   populateRuleCategorySelect();
@@ -3447,6 +3737,16 @@ async function init(){
 
   // Fetch latest JSON state from Vercel KV
   await fetchVercelKvData();
+}
+
+/* ===================== INIT ===================== */
+async function init(){
+  setupAuthHandlers();
+  updateAuthUI();
+  const user = getLoggedInUser();
+  if (user) {
+    await initAppAfterAuth();
+  }
 }
 init();
 })();
