@@ -1430,13 +1430,79 @@ td.num.expense { color: var(--expense-red); }
   font-size: 32px;
 }
 
+/* Settings Nav Button */
+.settings-nav-btn {
+  background: var(--text-primary);
+  color: #FFFFFF;
+  border: 1px solid var(--text-primary);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+.settings-nav-btn:hover {
+  background: #1E293B;
+  transform: translateY(-1px);
+}
+
+/* Settings Modal Specifics */
+.settings-modal-card {
+  max-width: 880px;
+  width: 92%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.settings-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-slate);
+}
+
 @media(max-width: 768px) {
-  header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .header-right { width: 100%; justify-content: space-between; }
+  .wrap { padding: 16px 12px 60px; }
+  header { flex-direction: column; align-items: flex-start; gap: 14px; padding: 16px; }
+  .header-right { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; }
+  .settings-nav-btn, .json-guide-btn, .download-html-btn { font-size: 12px; padding: 8px 12px; }
+  .month-tab { width: 100%; justify-content: space-between; margin-top: 4px; }
+  .month-label { flex: 1; text-align: center; }
   .summary-row { grid-template-columns: 1fr; gap: 12px; }
   .form-grid { grid-template-columns: 1fr 1fr; }
   .form-grid .submit-btn { grid-column: span 2; width: 100%; }
   .breakdown { grid-template-columns: 1fr; }
+
+  /* Mobile Table Responsiveness */
+  .ledger-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    border-radius: 12px;
+  }
+  .ledger-table-wrap table {
+    min-width: 580px;
+  }
+  thead th { padding: 10px 12px; font-size: 10.5px; }
+  tbody td { padding: 10px 12px; font-size: 12.5px; }
+
+  .pdf-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .pdf-table { min-width: 480px; }
+}
+
+@media(max-width: 480px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .submit-btn { grid-column: span 1; }
+  .brand-title { font-size: 19px; }
+  .settings-modal-card { width: 100%; max-height: 100vh; height: 100vh; border-radius: 0; }
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4"></script><style>.aistudio-hover-highlight { box-shadow: inset 0 0 0 0.5px white, inset 0 0 0 1.5px rgba(128,128,128,0.6) !important; }.aistudio-active-highlight { outline: 2px solid #87a9ff !important; outline-offset: -2px !important; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3), inset 0 0 0 0.5px rgba(0,0,0,0.3) !important; }.aistudio-generating-blur { filter: blur(5px) grayscale(100%) brightness(28%) !important; transition: filter 0.3s ease; }#aistudio-focus-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: #87a9ff; border-radius: 12px; z-index: 10000; padding: 8px; color: #32302c; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }#aistudio-hover-mode-tag { position: absolute; display: none; align-items: center; gap: 4px; background: rgba(128,128,128,0.6); border-radius: 12px; z-index: 10000; padding: 8px; color: white; font-family: Inter, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; line-height: 21px; pointer-events: none; }.aistudio-img-icon { display: none; vertical-align: middle; pointer-events: auto; cursor: pointer; }.aistudio-img-icon.visible { display: inline-flex; }#aistudio-focus-mode-tag .aistudio-img-icon { position: relative; width: 26px; height: 26px; background: #32302c; border-radius: 6px; margin: -4px -4px -4px 0; }#aistudio-focus-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 4px; left: 4px; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-hover-mode-tag .aistudio-img-icon { position: relative; width: 18px; height: 18px; margin-left: 4px; }#aistudio-hover-mode-tag .aistudio-img-icon::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 18px; background-color: white; -webkit-mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-image: url("https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/edit_fix_auto/default/24px.svg"); mask-size: contain; mask-repeat: no-repeat; }#aistudio-focus-mode-tag .aistudio-img-icon:hover, #aistudio-hover-mode-tag .aistudio-img-icon:hover { background: #424242 !important; }#aistudio-focus-mode-tag .aistudio-img-icon:active, #aistudio-hover-mode-tag .aistudio-img-icon:active { background: #393f51 !important; }</style></head>
@@ -1453,6 +1519,9 @@ td.num.expense { color: var(--expense-red); }
     </div>
   </div>
   <div class="header-right">
+    <button type="button" class="settings-nav-btn" id="openSettingsBtn">
+      ⚙️ Ayarlar
+    </button>
     <button type="button" class="json-guide-btn" id="openJsonGuideBtnHeader">
       ❓ Vercel &amp; JSON Rehberi
     </button>
@@ -1467,47 +1536,127 @@ td.num.expense { color: var(--expense-red); }
   </div>
 </header>
 
-<!-- JSON Data Storage Panel (Vercel KV & Local Storage) -->
-<section class="json-panel">
-  <div class="json-panel-header">
-    <div class="json-title">
-      <h2>⚡ Vercel KV &amp; JSON Veri Deposu
-        <span class="json-badge" id="jsonLiveStatus">
-          <span class="pulse-dot"></span> Vercel KV &amp; LocalStorage Active
-        </span>
-      </h2>
-      <p class="json-sub">Verileriniz anlık olarak Vercel KV (Key-Value Redis) veritabanı ile senkronize olur ve her açılışta <code>/api/veri</code> servisinden canlı çekilir.</p>
+<!-- Main Settings Modal (Ayarlar: Vercel KV Veri Deposu & Kategori Kuralları) -->
+<div id="settingsModal" class="modal-overlay" style="display: none;">
+  <div class="modal-card settings-modal-card">
+    <div class="modal-header">
+      <h3>⚙️ Uygulama Ayarları &amp; Veri Deposu</h3>
+      <button type="button" class="modal-close-btn" id="closeSettingsBtn">×</button>
     </div>
-    <button type="button" class="json-guide-btn" id="openJsonGuideBtn">
-      ❓ Vercel &amp; KV Rehberi
-    </button>
-  </div>
+    <div class="modal-body settings-modal-body">
 
-  <div class="json-form-box">
-    <div class="json-actions-row">
-      <div class="json-btn-group">
-        <button type="button" class="json-sec-btn primary-action" id="jsonKvSyncBtn">
-          ☁️ Vercel KV'den Çek / Yenile
-        </button>
-        <button type="button" class="json-sec-btn" id="jsonImportBtn">
-          📥 JSON Dosyası Yükle
-        </button>
-        <button type="button" class="json-sec-btn" id="jsonExportBtn">
-          📤 JSON Olarak İndir (.json)
-        </button>
-        <button type="button" class="json-sec-btn" id="jsonCopyBtn">
-          📋 JSON İçeriğini Kopyala
-        </button>
-        <button type="button" class="json-sec-btn" id="jsonPasteBtn">
-          📝 Metin Yapıştır &amp; Yükle
-        </button>
-      </div>
-      <input type="file" id="jsonFileInput" accept=".json,.txt" style="display:none;">
+      <!-- JSON Data Storage Panel (Vercel KV & Local Storage) -->
+      <section class="json-panel" style="margin-bottom:0;">
+        <div class="json-panel-header">
+          <div class="json-title">
+            <h2>⚡ Vercel KV &amp; JSON Veri Deposu
+              <span class="json-badge" id="jsonLiveStatus">
+                <span class="pulse-dot"></span> Vercel KV &amp; LocalStorage Active
+              </span>
+            </h2>
+            <p class="json-sub">Verileriniz anlık olarak Vercel KV (Key-Value Redis) veritabanı ile senkronize olur ve her açılışta <code>/api/veri</code> servisinden canlı çekilir.</p>
+          </div>
+          <button type="button" class="json-guide-btn" id="openJsonGuideBtn">
+            ❓ Vercel &amp; KV Rehberi
+          </button>
+        </div>
+
+        <div class="json-form-box">
+          <div class="json-actions-row">
+            <div class="json-btn-group">
+              <button type="button" class="json-sec-btn primary-action" id="jsonKvSyncBtn">
+                ☁️ Vercel KV'den Çek / Yenile
+              </button>
+              <button type="button" class="json-sec-btn" id="jsonImportBtn">
+                📥 JSON Dosyası Yükle
+              </button>
+              <button type="button" class="json-sec-btn" id="jsonExportBtn">
+                📤 JSON Olarak İndir (.json)
+              </button>
+              <button type="button" class="json-sec-btn" id="jsonCopyBtn">
+                📋 JSON İçeriğini Kopyala
+              </button>
+              <button type="button" class="json-sec-btn" id="jsonPasteBtn">
+                📝 Metin Yapıştır &amp; Yükle
+              </button>
+            </div>
+            <input type="file" id="jsonFileInput" accept=".json,.txt" style="display:none;">
+          </div>
+
+          <div id="jsonStatusMsg" class="json-status-msg success" style="display: block;">🟢 <strong>Vercel KV Senkronize:</strong> 13 İşlem veritabanından çekildi.</div>
+        </div>
+      </section>
+
+      <!-- Category Matching Rules Section -->
+      <section class="rules-panel" style="margin-bottom:0;">
+        <div class="rules-panel-header">
+          <h2>⚡ Otomatik Kategori Eşleştirme Kuralları <span class="rule-badge" id="ruleCountBadge">6 Kural Aktif</span></h2>
+        </div>
+        <div class="collapsible-content" id="rulesPanelContent">
+          <p>Sık yaptığınız harcamalar için kelime kuralları tanımlayın. İşlem eklerken veya PDF ekstre yüklerken kategori otomatik seçilir (Örn: "Netflix" → "Abonelikler").</p>
+
+          <form id="ruleForm" class="rule-form">
+            <div class="rule-form-grid">
+              <div class="field">
+                <label for="ruleKeywordInput">Açıklamada Geçen Kelime / İfade</label>
+                <input type="text" id="ruleKeywordInput" placeholder="Örn: Netflix, Migros, Shell, Spotify" required="">
+              </div>
+              <div class="field">
+                <label for="ruleCategorySelect">Otomatik Atanacak Kategori</label>
+                <select id="ruleCategorySelect"><optgroup label="Gider Kategorileri"><option value="Kira">Kira</option><option value="Faturalar">Faturalar</option><option value="Kredi Kartı Ekstresi">Kredi Kartı Ekstresi</option><option value="Market">Market</option><option value="Restoran &amp; Kafe">Restoran &amp; Kafe</option><option value="Ulaşım">Ulaşım</option><option value="Yakıt">Yakıt</option><option value="Sağlık &amp; Eczane">Sağlık &amp; Eczane</option><option value="Giyim">Giyim</option><option value="Elektronik">Elektronik</option><option value="Eğlence">Eğlence</option><option value="Abonelikler">Abonelikler</option><option value="Eğitim">Eğitim</option><option value="Seyahat">Seyahat</option><option value="Diğer Gider">Diğer Gider</option></optgroup><optgroup label="Gelir Kategorileri"><option value="Maaş">Maaş</option><option value="Ek Gelir">Ek Gelir</option><option value="Yatırım Geliri">Yatırım Geliri</option><option value="Kira Geliri">Kira Geliri</option><option value="İkramiye">İkramiye</option><option value="Diğer Gelir">Diğer Gelir</option></optgroup></select>
+              </div>
+              <div class="field btn-field">
+                <button type="submit" class="add-rule-btn">➕ Kural Ekle</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="rules-table-wrapper">
+            <table class="rules-table">
+              <thead>
+                <tr>
+                  <th>Aranan Kelime / İfade</th>
+                  <th>Atanacak Kategori</th>
+                  <th style="width: 90px; text-align: center;">İşlem</th>
+                </tr>
+              </thead>
+              <tbody id="rulesTbody"><tr>
+      <td><span class="rule-keyword-tag">Netflix</span></td>
+      <td><span class="rule-cat-tag">Abonelikler</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_1" title="Kuralı Sil">Sil</button></td>
+    </tr><tr>
+      <td><span class="rule-keyword-tag">Migros</span></td>
+      <td><span class="rule-cat-tag">Market</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_2" title="Kuralı Sil">Sil</button></td>
+    </tr><tr>
+      <td><span class="rule-keyword-tag">Shell</span></td>
+      <td><span class="rule-cat-tag">Yakıt</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_3" title="Kuralı Sil">Sil</button></td>
+    </tr><tr>
+      <td><span class="rule-keyword-tag">Starbucks</span></td>
+      <td><span class="rule-cat-tag">Restoran &amp; Kafe</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_4" title="Kuralı Sil">Sil</button></td>
+    </tr><tr>
+      <td><span class="rule-keyword-tag">Eczane</span></td>
+      <td><span class="rule-cat-tag">Sağlık &amp; Eczane</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_5" title="Kuralı Sil">Sil</button></td>
+    </tr><tr>
+      <td><span class="rule-keyword-tag">ÇAĞDAŞ MARKET</span></td>
+      <td><span class="rule-cat-tag">Market</span></td>
+      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="tx_1785140054130_fpdw75" title="Kuralı Sil">Sil</button></td>
+    </tr></tbody>
+            </table>
+            <div id="noRulesMsg" class="no-rules-msg" style="display:none;">Henüz tanımlanmış kategori kuralı yok.</div>
+          </div>
+        </div>
+      </section>
+
     </div>
-
-    <div id="jsonStatusMsg" class="json-status-msg success" style="display: block;">🟢 <strong>Vercel KV Senkronize:</strong> 13 İşlem veritabanından çekildi.</div>
+    <div class="modal-footer">
+      <button type="button" class="modal-primary-btn" id="closeSettingsBtnFooter">Tamam &amp; Kapat</button>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- JSON Guide Modal -->
 <div id="jsonGuideModal" class="modal-overlay" style="display:none;">
@@ -1636,73 +1785,6 @@ td.num.expense { color: var(--expense-red); }
     </div>
     <div id="ruleMatchHint" class="rule-match-hint" style="display:none;"></div>
   </form>
-</section>
-
-<!-- Category Matching Rules Section -->
-<section class="rules-panel">
-  <div class="rules-panel-header">
-    <h2>⚡ Otomatik Kategori Eşleştirme Kuralları <span class="rule-badge" id="ruleCountBadge">6 Kural Aktif</span></h2>
-    <button type="button" class="panel-toggle-btn collapsed" id="toggleRulesBtn" title="Paneli Gizle / Göster">
-      <span class="toggle-icon">▼</span> <span class="toggle-text">Göster</span>
-    </button>
-  </div>
-  <div class="collapsible-content collapsed" id="rulesPanelContent">
-    <p>Sık yaptığınız harcamalar için kelime kuralları tanımlayın. İşlem eklerken veya PDF ekstre yüklerken kategori otomatik seçilir (Örn: "Netflix" → "Abonelikler").</p>
-
-    <form id="ruleForm" class="rule-form">
-      <div class="rule-form-grid">
-        <div class="field">
-          <label for="ruleKeywordInput">Açıklamada Geçen Kelime / İfade</label>
-          <input type="text" id="ruleKeywordInput" placeholder="Örn: Netflix, Migros, Shell, Spotify" required="">
-        </div>
-        <div class="field">
-          <label for="ruleCategorySelect">Otomatik Atanacak Kategori</label>
-          <select id="ruleCategorySelect"><optgroup label="Gider Kategorileri"><option value="Kira">Kira</option><option value="Faturalar">Faturalar</option><option value="Kredi Kartı Ekstresi">Kredi Kartı Ekstresi</option><option value="Market">Market</option><option value="Restoran &amp; Kafe">Restoran &amp; Kafe</option><option value="Ulaşım">Ulaşım</option><option value="Yakıt">Yakıt</option><option value="Sağlık &amp; Eczane">Sağlık &amp; Eczane</option><option value="Giyim">Giyim</option><option value="Elektronik">Elektronik</option><option value="Eğlence">Eğlence</option><option value="Abonelikler">Abonelikler</option><option value="Eğitim">Eğitim</option><option value="Seyahat">Seyahat</option><option value="Diğer Gider">Diğer Gider</option></optgroup><optgroup label="Gelir Kategorileri"><option value="Maaş">Maaş</option><option value="Ek Gelir">Ek Gelir</option><option value="Yatırım Geliri">Yatırım Geliri</option><option value="Kira Geliri">Kira Geliri</option><option value="İkramiye">İkramiye</option><option value="Diğer Gelir">Diğer Gelir</option></optgroup></select>
-        </div>
-        <div class="field btn-field">
-          <button type="submit" class="add-rule-btn">➕ Kural Ekle</button>
-        </div>
-      </div>
-    </form>
-
-    <div class="rules-table-wrapper">
-      <table class="rules-table">
-        <thead>
-          <tr>
-            <th>Aranan Kelime / İfade</th>
-            <th>Atanacak Kategori</th>
-            <th style="width: 90px; text-align: center;">İşlem</th>
-          </tr>
-        </thead>
-        <tbody id="rulesTbody"><tr>
-      <td><span class="rule-keyword-tag">Netflix</span></td>
-      <td><span class="rule-cat-tag">Abonelikler</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_1" title="Kuralı Sil">Sil</button></td>
-    </tr><tr>
-      <td><span class="rule-keyword-tag">Migros</span></td>
-      <td><span class="rule-cat-tag">Market</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_2" title="Kuralı Sil">Sil</button></td>
-    </tr><tr>
-      <td><span class="rule-keyword-tag">Shell</span></td>
-      <td><span class="rule-cat-tag">Yakıt</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_3" title="Kuralı Sil">Sil</button></td>
-    </tr><tr>
-      <td><span class="rule-keyword-tag">Starbucks</span></td>
-      <td><span class="rule-cat-tag">Restoran &amp; Kafe</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_4" title="Kuralı Sil">Sil</button></td>
-    </tr><tr>
-      <td><span class="rule-keyword-tag">Eczane</span></td>
-      <td><span class="rule-cat-tag">Sağlık &amp; Eczane</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="rule_5" title="Kuralı Sil">Sil</button></td>
-    </tr><tr>
-      <td><span class="rule-keyword-tag">ÇAĞDAŞ MARKET</span></td>
-      <td><span class="rule-cat-tag">Market</span></td>
-      <td style="text-align:center;"><button type="button" class="rule-del-btn" data-id="tx_1785140054130_fpdw75" title="Kuralı Sil">Sil</button></td>
-    </tr></tbody>
-      </table>
-      <div id="noRulesMsg" class="no-rules-msg" style="display:none;">Henüz tanımlanmış kategori kuralı yok.</div>
-    </div>
-  </div>
 </section>
 
 <!-- PDF Credit Card Upload with Multi-Provider AI (Groq, Gemini, OpenAI, OpenRouter) + Fallback -->
@@ -3303,6 +3385,27 @@ if (el('jsonCopyBtn')) {
   el('jsonCopyBtn').addEventListener('click', copyJsonContent);
 }
 
+function setupSettingsModal() {
+  const modal = el('settingsModal');
+  const openBtn = el('openSettingsBtn');
+  const closeBtn = el('closeSettingsBtn');
+  const closeBtnFooter = el('closeSettingsBtnFooter');
+
+  const showModal = () => { if (modal) modal.style.display = 'flex'; };
+  const hideModal = () => { if (modal) modal.style.display = 'none'; };
+
+  if (openBtn) openBtn.addEventListener('click', showModal);
+  if (closeBtn) closeBtn.addEventListener('click', hideModal);
+  if (closeBtnFooter) closeBtnFooter.addEventListener('click', hideModal);
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) hideModal();
+    });
+  }
+}
+
+setupSettingsModal();
 setupJsonGuideModal();
 setupPasteJsonModal();
 
