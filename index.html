@@ -1971,11 +1971,11 @@ td.num.expense { color: var(--expense-red); }
 <section class="pdf-panel">
   <div class="pdf-panel-header">
     <h2>📄 Kredi Kartı Ekstresi Analizi <span class="ai-badge" id="aiModeBadge">Çoklu Yapay Zeka Desteği (Groq / Gemini / ChatGPT)</span></h2>
-    <button type="button" class="panel-toggle-btn collapsed" id="togglePdfBtn" title="Paneli Gizle / Göster">
-      <span class="toggle-icon">▼</span> <span class="toggle-text">Göster</span>
+    <button type="button" class="panel-toggle-btn" id="togglePdfBtn" title="Paneli Gizle / Göster">
+      <span class="toggle-icon">▼</span> <span class="toggle-text">Gizle</span>
     </button>
   </div>
-  <div class="collapsible-content collapsed" id="pdfPanelContent">
+  <div class="collapsible-content" id="pdfPanelContent">
     <p>Banka ekstrenizi PDF olarak yükleyin — harcamalar yapay zeka ile otomatik okunup kategorize edilir. Tercih ettiğiniz servisin ücretsiz API Key'ini girerek veya yerel okuyucu ile kullanabilirsiniz.</p>
 
     <div class="api-key-box">
@@ -1991,15 +1991,15 @@ td.num.expense { color: var(--expense-red); }
 
       <div class="api-key-row">
         <label for="apiKeyInput" id="apiKeyInputLabel">Groq API Key:</label>
-        <input type="password" id="apiKeyInput" placeholder="gsk_..." value="">
+        <input type="password" id="apiKeyInput" placeholder="gsk_... (Gizli Key Kayıtlı)" value="">
         <button type="button" class="test-key-btn" id="testKeyBtn">🔑 API Key'i Test Et</button>
       </div>
-      <div id="keyStatusMsg" class="key-status-msg" style="display: none;"></div>
+      <div id="keyStatusMsg" class="key-status-msg success" style="display: block; background: var(--blue-light); color: var(--primary-blue);">✅ <strong>Groq Cloud (Llama 3.3) API Key Geçerli ve Aktif!</strong> (Sunucuda Gizli/Güvenli Kayıtlı Key Kullanıldı)<br>Erişilebilir Modeller: <code>llama-3.3-70b-versatile, llama3-8b-8192</code></div>
       <button type="button" class="help-toggle-btn" id="helpToggleBtn">❓ Seçili AI Servisinden Nasıl Ücretsiz API Key Alınır?</button>
       <div class="guide-box" id="guideBox">
       <strong>⚡ Groq Cloud %100 Ücretsiz &amp; Süper Hızlı API Key Alımı (Önerilen):</strong>
       <ol style="margin:6px 0 0 18px;padding:0;">
-        <li>1. <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> adresine gidin.</li><li>2. Google veya e-posta ile saniyeler içinde giriş yapın (Kredi kartı İSTEMEZ).</li><li>3. <strong>"Create API Key"</strong> butonuna tıklayın ve ismi girip oluşturun.</li><li>4. <code>gsk_...</code> ile başlayan anahtarı kopyalayıp yukarıya yapıştırın.</li>
+        <li>1. <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> adresine gidin.</li><li>2. Google veya e-posta ile saniyeler içinde giriş yapın (Kredi kartı İSTEMEZ).</li><li>3. <strong>"Create API Key"</strong> butonuna tıklayın ve ismi girip oluşturun.</li><li>4. <code>gsk_...</code> ile başlayan anahtarı kopyalayıp yukarıya yapıştırın veya boş bırakın (gizli key hazır).</li>
       </ol>
     </div>
     </div>
@@ -2134,7 +2134,7 @@ td.num.expense { color: var(--expense-red); }
 
       <div class="login-field">
         <label for="loginUsername">Kullanıcı Adı</label>
-        <input type="text" id="loginUsername" placeholder="Kullanıcı adı" autocomplete="username" required="">
+        <input type="text" id="loginUsername" placeholder="Kullanıcı Adı" autocomplete="username" required="">
       </div>
 
       <div class="login-field">
@@ -2323,14 +2323,14 @@ const PROVIDER_CONFIGS = {
   groq: {
     name: 'Groq Cloud (Llama 3.3)',
     label: 'Groq API Key:',
-    placeholder: 'gsk_...',
+    placeholder: 'gsk_... (Gizli Key Kayıtlı)',
     storageKey: 'hesap_defteri_groq_key',
     helpTitle: '⚡ Groq Cloud %100 Ücretsiz & Süper Hızlı API Key Alımı (Önerilen):',
     helpSteps: [
       '1. <a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a> adresine gidin.',
       '2. Google veya e-posta ile saniyeler içinde giriş yapın (Kredi kartı İSTEMEZ).',
       '3. <strong>"Create API Key"</strong> butonuna tıklayın ve ismi girip oluşturun.',
-      '4. <code>gsk_...</code> ile başlayan anahtarı kopyalayıp yukarıya yapıştırın.'
+      '4. <code>gsk_...</code> ile başlayan anahtarı kopyalayıp yukarıya yapıştırın veya boş bırakın (gizli key hazır).'
     ]
   },
   gemini: {
@@ -2414,12 +2414,6 @@ async function testApiKey(){
   const apiKey = getSavedApiKey(provider);
   const statusEl = el('keyStatusMsg');
 
-  if(!apiKey){
-    statusEl.className = 'key-status-msg error';
-    statusEl.innerHTML = `⚠ Lütfen önce bir ${cfg.name} API Key girin. (Örn: <code>${cfg.placeholder}</code>)`;
-    return null;
-  }
-
   statusEl.className = 'key-status-msg';
   statusEl.style.display = 'block';
   statusEl.style.background = 'var(--blue-light)';
@@ -2427,65 +2421,25 @@ async function testApiKey(){
   statusEl.innerHTML = `⏳ ${cfg.name} API Key doğrulanıyor...`;
 
   try {
-    let isValid = false;
-    let detailMsg = '';
+    const res = await fetch('/api/test-key', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ provider, apiKey })
+    });
 
-    if(provider === 'groq'){
-      const resp = await fetch('https://api.groq.com/openai/v1/models', {
-        headers: { 'Authorization': `Bearer ${apiKey}` }
-      });
-      if(resp.ok){
-        isValid = true;
-        detailMsg = 'Erişilebilir Modeller: <code>llama-3.3-70b-versatile, llama3-8b-8192</code>';
-      } else {
-        const errJson = await resp.json().catch(()=>({}));
-        detailMsg = errJson.error?.message || `HTTP ${resp.status}`;
+    if(res.ok){
+      const respData = await res.json();
+      if(apiKey){
+        localStorage.setItem(cfg.storageKey, apiKey);
       }
-    } else if(provider === 'gemini'){
-      const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-      if(resp.ok){
-        const data = await resp.json();
-        const availableModels = (data.models || [])
-          .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
-          .map(m => m.name.replace('models/', ''));
-        isValid = true;
-        detailMsg = `Erişilebilir Modeller: <code>${availableModels.slice(0,4).join(', ')}</code>`;
-      } else {
-        const errJson = await resp.json().catch(()=>({}));
-        detailMsg = errJson.error?.message || `HTTP ${resp.status}`;
-      }
-    } else if(provider === 'openai'){
-      const resp = await fetch('https://api.openai.com/v1/models', {
-        headers: { 'Authorization': `Bearer ${apiKey}` }
-      });
-      if(resp.ok){
-        isValid = true;
-        detailMsg = 'Erişilebilir Modeller: <code>gpt-4o-mini, gpt-4o</code>';
-      } else {
-        const errJson = await resp.json().catch(()=>({}));
-        detailMsg = errJson.error?.message || `HTTP ${resp.status}`;
-      }
-    } else if(provider === 'openrouter'){
-      const resp = await fetch('https://openrouter.ai/api/v1/models', {
-        headers: { 'Authorization': `Bearer ${apiKey}` }
-      });
-      if(resp.ok){
-        isValid = true;
-        detailMsg = 'OpenRouter Bağlantısı Başarılı!';
-      } else {
-        const errJson = await resp.json().catch(()=>({}));
-        detailMsg = errJson.error?.message || `HTTP ${resp.status}`;
-      }
-    }
-
-    if(isValid){
-      localStorage.setItem(cfg.storageKey, apiKey);
       statusEl.className = 'key-status-msg success';
-      statusEl.innerHTML = `✅ <strong>${cfg.name} API Key Geçerli ve Kaydedildi!</strong><br>${detailMsg}`;
+      const keySourceStr = respData.isServerKey ? '(Sunucuda Gizli/Güvenli Kayıtlı Key Kullanıldı)' : '(Girilen Key Doğrulandı)';
+      statusEl.innerHTML = `✅ <strong>${cfg.name} API Key Geçerli ve Aktif!</strong> ${keySourceStr}<br>${respData.detailMsg}`;
       return true;
     } else {
+      const errJson = await res.json().catch(()=>({}));
       statusEl.className = 'key-status-msg error';
-      statusEl.innerHTML = `❌ <strong>API Key Hatası:</strong> ${detailMsg}`;
+      statusEl.innerHTML = `❌ <strong>API Key Hatası:</strong> ${errJson.error || 'Doğrulama başarısız.'}`;
       return null;
     }
   } catch(e) {
