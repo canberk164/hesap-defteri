@@ -153,40 +153,51 @@ header {
   border-color: var(--border-hover);
 }
 
+.summary-month-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .month-tab {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   background: #0F172A;
   color: #FFFFFF;
-  padding: 6px 8px 6px 14px;
-  border-radius: 10px;
-  font-family: 'IBM Plex Mono', monospace;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+  padding: 8px 12px 8px 18px;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', 'IBM Plex Mono', monospace;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+  border: 1px solid #1E293B;
 }
 .month-tab button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border: none;
   color: #FFFFFF;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease;
+  transition: all 0.15s ease;
 }
 .month-tab button:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
 }
 .month-label {
-  font-size: 13px;
-  font-weight: 600;
-  min-width: 120px;
+  font-size: 16px;
+  font-weight: 800;
+  min-width: 150px;
   text-align: center;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  color: #F8FAFC;
 }
 
 /* Database Panel */
@@ -1695,11 +1706,6 @@ td.num.expense { color: var(--expense-red); }
     <button type="button" class="download-html-btn" id="downloadHtmlBtn">
       <span>💾</span> Tek Dosya HTML İndir
     </button>
-    <div class="month-tab">
-      <button id="prevMonth" aria-label="Önceki ay">‹</button>
-      <span class="month-label" id="monthLabel">Temmuz 2026</span>
-      <button id="nextMonth" aria-label="Sonraki ay">›</button>
-    </div>
   </div>
 </header>
 
@@ -1914,6 +1920,13 @@ td.num.expense { color: var(--expense-red); }
 
 <!-- Balance Summary -->
 <section class="ledger-summary">
+  <div class="summary-month-header">
+    <div class="month-tab">
+      <button id="prevMonth" aria-label="Önceki ay">‹</button>
+      <span class="month-label" id="monthLabel">Temmuz 2026</span>
+      <button id="nextMonth" aria-label="Sonraki ay">›</button>
+    </div>
+  </div>
   <div class="summary-row">
     <div class="summary-item">
       <div class="label">Devreden Bakiye</div>
@@ -2115,7 +2128,7 @@ td.num.expense { color: var(--expense-red); }
     </div>
 
     <form id="loginForm" class="login-form" onsubmit="return false;">
-      <div id="loginErrorAlert" class="login-error-alert" style="display: none;">
+      <div id="loginErrorAlert" class="login-error-alert">
         Kullanıcı adı veya şifre hatalı!
       </div>
 
